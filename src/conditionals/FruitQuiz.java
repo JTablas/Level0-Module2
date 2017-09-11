@@ -10,6 +10,7 @@ import java.awt.event.KeyEvent;
 import javax.swing.JApplet;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 public class FruitQuiz extends KeyAdapter {
 
@@ -18,21 +19,34 @@ public class FruitQuiz extends KeyAdapter {
 				"<html>Which is not a real animal? <br> A: Flubber Monkey <br> B: Pink Fairy Armadillo <br> C: Dumbo Octopus</html>");
 		// 11. Make another question called "question2"
 		
+	question2 = new JLabel(
+			"<html>Which is true? <br> A: Nothing <br> B: Lies <br> C: Everything</html>");
 	}
-
 	@Override
 	public void keyPressed(KeyEvent arg0) {
 		int keyCode = arg0.getKeyCode();
 		// 1. Print out the key code variable
-		
+		System.out.println(keyCode);
 
 		// 2. Make 3 variables that hold the key codes for apple, banana and carrot
-
+		int apple=65;
+		int banana=66;
+		int carrot=67;
 		
-
+		
 		
 		if (question1.isShowing()) {
 			// 3. If they touched the right fruit, do steps 4 and 7
+			if(keyCode==apple){
+			JOptionPane.showMessageDialog(null, "Correct");
+			correct();
+			nextQuestion(question2);
+			}else{JOptionPane.showMessageDialog(null, "Wrong");
+			incorrect();
+			// 11. Make another question called "question2"
+			
+		
+			}
 			
 				// 4. Call the correct() method
 				
@@ -40,16 +54,26 @@ public class FruitQuiz extends KeyAdapter {
 			
 			
 			// 8. else (if they touched something else)
-				
+			
+			}
 				// 9. Call the incorrect() method
 			
 
-		}
-
-		// 12. If question2 is showing,
+		 if(question2.isShowing()){
+			if(keyCode==banana){
+			JOptionPane.showMessageDialog(null, "Correct");
+			correct();
+			nextQuestion(question3);}}
+		 else{JOptionPane.showMessageDialog(null, "Wrong");
+		 incorrect();
+		 }
+		}// 12. If question2 is showing,
+	
+			
+		
 		
 			// 13. check if it is right or wrong like you did for question1
-	}
+	
 
 	private void correct() {
 		// 5. Find a sound for when they get a question right, and drag it into
